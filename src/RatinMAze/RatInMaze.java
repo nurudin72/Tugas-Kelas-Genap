@@ -12,7 +12,7 @@ package RatinMAze;
 
 	public int[][] solution;
 
-	//initialize the solution matrix in constructor.
+	
 	public RatInMaze(int N) {
 		solution = new int[N][N];
 		for (int i = 0; i < N; i++) {
@@ -32,15 +32,15 @@ package RatinMAze;
 	}
 
 	public boolean findPath(int[][] maze, int x, int y, int N, String direction) {
-		// check if maze[x][y] is feasible to move
-		if(x==N-1 && y==N-1){//we have reached
+		
+		if(x==N-1 && y==N-1){
 			solution[x][y] = 1;
 			return true;
 		}
 		if (isSafeToGo(maze, x, y, N)) {
-			// move to maze[x][y]
+			
 			solution[x][y] = 1;			
-			// now rat has four options, either go right OR go down or left or go up
+			
 			if(direction!="up" && findPath(maze, x+1, y, N, "down")){ //go down
 				return true;
 			}
@@ -67,16 +67,16 @@ package RatinMAze;
 				return true;
 			}
                          
-			//if none of the options work out BACKTRACK undo the move
+			
 			solution[x][y] = 0;
 			return false;
 		}
 		return false;
 	}
 
-	// this function will check if mouse can move to this cell
+	
 	public boolean isSafeToGo(int[][] maze, int x, int y, int N) {
-		// check if x and y are in limits and cell is not blocked
+		
 		if (x >= 0 && y >= 0 && x < N  && y < N && maze[x][y] != 0) {
 			return true;
 		}
